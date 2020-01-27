@@ -8,10 +8,10 @@
 
 import Foundation
 
-typealias DisplayFactsUseCaseCompletionHandler = (_ fact: Result<Fact, Error>) -> Void
-typealias DisplayFactsBySearchCompletionHandler = (_ facts: Result<[Fact], Error>) -> Void
-typealias DisplayCategoriesCompletionHandler = (_ categories: Result<[String], Error>) -> Void
-typealias DisplayFactsByCategoryCompletionHandler = (_ facts: Result<[Fact], Error>) -> Void
+typealias DisplayFactsUseCaseCompletionHandler = (_ fact: Result<Fact>) -> Void
+typealias DisplayFactsBySearchCompletionHandler = (_ facts: Result<[Fact]>) -> Void
+typealias DisplayCategoriesCompletionHandler = (_ categories: Result<[String]>) -> Void
+typealias DisplayFactsByCategoryCompletionHandler = (_ facts: Result<Fact>) -> Void
 
 protocol DisplayFactsUseCase {
   func displayRandom(completionHandler: @escaping DisplayFactsUseCaseCompletionHandler)

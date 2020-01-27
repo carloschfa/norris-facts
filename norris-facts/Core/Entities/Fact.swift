@@ -11,5 +11,6 @@ import Foundation
 struct Fact {
   var id: String
   var value: String
+  var url: String
   var categories: [String]
 }

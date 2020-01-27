@@ -8,10 +8,10 @@
 
 import Foundation
 
-typealias FetchRandomFactEntityGatewayCompletionHandler = (_ fact: Result<Fact, Error>) -> Void
-typealias FetchFactsEntityBySearchGatewayCompletionHandler = (_ facts: Result<[Fact], Error>) -> Void
-typealias FetchFactsCategoriesGatewayCompletionHandler = (_ categories: Result<[String], Error>) -> Void
-typealias FetchFactsEntityByCategoryGatewayCompletionHandler = (_ facts: Result<[Fact], Error>) -> Void
+typealias FetchRandomFactEntityGatewayCompletionHandler = (_ fact: Result<Fact>) -> Void
+typealias FetchFactsEntityBySearchGatewayCompletionHandler = (_ facts: Result<[Fact]>) -> Void
+typealias FetchFactsCategoriesGatewayCompletionHandler = (_ categories: Result<[String]>) -> Void
+typealias FetchFactsEntityByCategoryGatewayCompletionHandler = (_ facts: Result<Fact>) -> Void
 
 protocol FactsGateway {
   func fetchRandom(completionHandler: @escaping FetchRandomFactEntityGatewayCompletionHandler)
