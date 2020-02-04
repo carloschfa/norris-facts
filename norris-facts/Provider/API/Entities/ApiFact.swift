@@ -16,7 +16,7 @@ struct ApiFact: Decodable {
   var updatedAt: String
   var url: String
   var value: String
-  
+
   enum CodingKeys: String, CodingKey {
     case categories = "categories"
     case createdAt = "created_at"

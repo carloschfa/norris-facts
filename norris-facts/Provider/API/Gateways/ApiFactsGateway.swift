@@ -12,13 +12,13 @@ protocol ApiFactsGateway: FactsGateway { }
 
 class ApiFactsGatewayImplementation: ApiFactsGateway {
   let apiClient: ApiClient
-  
+
   init(apiClient: ApiClient) {
     self.apiClient = apiClient
   }
-  
+
   // MARK: - ApiFactsGateway
-  
+
   func fetchRandom(completionHandler: @escaping FetchRandomFactEntityGatewayCompletionHandler) {
     let request = FactsRandomApiRequest()
     apiClient.execute(request: request) { (result: Result<ApiResponse<ApiFact>>) in
@@ -30,9 +30,9 @@ class ApiFactsGatewayImplementation: ApiFactsGateway {
         completionHandler(.failure(error))
       }
     }
-    
+
   }
-  
+
   func fetchBySearch(completionHandler: @escaping FetchFactsEntityBySearchGatewayCompletionHandler) {
     let request = FactsBySearchApiRequest(query: "")
     apiClient.execute(request: request) { (result: Result<ApiResponse<[ApiFact]>>) in
@@ -45,7 +45,7 @@ class ApiFactsGatewayImplementation: ApiFactsGateway {
       }
     }
   }
-  
+
   func fetchCategories(completionHandler: @escaping FetchFactsCategoriesGatewayCompletionHandler) {
     let request = FactsRandomApiRequest()
     apiClient.execute(request: request) { (result: Result<ApiResponse<[String]>>) in
@@ -58,7 +58,7 @@ class ApiFactsGatewayImplementation: ApiFactsGateway {
       }
     }
   }
-  
+
   func fetchByCategory(completionHandler: @escaping FetchFactsEntityByCategoryGatewayCompletionHandler) {
     let request = FactsRandomApiRequest()
     apiClient.execute(request: request) { (result: Result<ApiResponse<ApiFact>>) in

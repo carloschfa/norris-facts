@@ -17,7 +17,7 @@ public extension Array where Element: Any {
   
   - returns: `Data` containing the serialized JSON or empty `Data` (e.g. `Data()`) if the serialization fails
   */
-        func toJsonData() -> Data {
+  func toJsonData() -> Data {
     do {
       return try JSONSerialization.data(withJSONObject: self, options: [])
     } catch {

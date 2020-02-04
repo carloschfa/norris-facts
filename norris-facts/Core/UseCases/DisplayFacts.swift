@@ -22,33 +22,33 @@ protocol DisplayFactsUseCase {
 
 class DisplayFactsUseCaseImplementation: DisplayFactsUseCase {
   let factsGateway: FactsGateway
-  
+
   init(factsGateway: FactsGateway) {
     self.factsGateway = factsGateway
   }
-  
+
   func displayRandom(completionHandler: @escaping DisplayFactsUseCaseCompletionHandler) {
     self.factsGateway.fetchRandom { (result) in
       completionHandler(result)
     }
   }
-  
+
   func displayBySearch(completionHandler: @escaping DisplayFactsBySearchCompletionHandler) {
     self.factsGateway.fetchBySearch { (result) in
       completionHandler(result)
     }
   }
-  
+
   func displayCategories(completionHandler: @escaping DisplayCategoriesCompletionHandler) {
     self.factsGateway.fetchCategories { (result) in
       completionHandler(result)
     }
   }
-  
+
   func displayByCategory(completionHandler: @escaping DisplayFactsByCategoryCompletionHandler) {
     self.factsGateway.fetchByCategory { (result) in
       completionHandler(result)
     }
   }
-  
+
 }
