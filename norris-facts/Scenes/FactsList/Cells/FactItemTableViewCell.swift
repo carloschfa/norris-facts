@@ -40,9 +40,8 @@ class FactItemTableViewCell: UITableViewCell {
   }
 
   @IBAction func shareButtonAction(_ sender: Any) {
-    // guard let data = self.data else { return }
-    delegate?.shareButtonIsPressed(with: "asdfasdfsda", and: URL(string: "http://github.com"))
+    guard let data = self.data, let url = data.url else { return }
+    delegate?.shareButtonIsPressed(with: data.text, and: url)
   }
-
 
 }

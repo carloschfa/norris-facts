@@ -33,13 +33,13 @@ class ApiFactsGatewayImplementation: ApiFactsGateway {
 
   }
 
-  func fetchBySearch(completionHandler: @escaping FetchFactsEntityBySearchGatewayCompletionHandler) {
-    let request = FactsBySearchApiRequest(query: "")
-    apiClient.execute(request: request) { (result: Result<ApiResponse<[ApiFact]>>) in
+  func fetchBySearch(with query: String, completionHandler: @escaping FetchFactsEntityBySearchGatewayCompletionHandler) {
+    let request = FactsBySearchApiRequest(query: query)
+    apiClient.execute(request: request) { (result: Result<ApiResponse<ApiFactResponse>>) in
       switch result {
       case let .success(response):
-        let fact = response.entity.map { return $0.fact }
-        completionHandler(.success(fact))
+        let facts = response.entity.facts.map { return $0.fact }
+        completionHandler(.success(facts))
       case let .failure(error):
         completionHandler(.failure(error))
       }
@@ -47,10 +47,10 @@ class ApiFactsGatewayImplementation: ApiFactsGateway {
   }
 
   func fetchCategories(completionHandler: @escaping FetchFactsCategoriesGatewayCompletionHandler) {
-    let request = FactsRandomApiRequest()
+    let request = CategoriesApiRequest()
     apiClient.execute(request: request) { (result: Result<ApiResponse<[String]>>) in
       switch result {
-      case let .success(response):
+      case let .success(response):  
         let fact = response.entity.map { return $0 }
         completionHandler(.success(fact))
       case let .failure(error):
@@ -59,8 +59,8 @@ class ApiFactsGatewayImplementation: ApiFactsGateway {
     }
   }
 
-  func fetchByCategory(completionHandler: @escaping FetchFactsEntityByCategoryGatewayCompletionHandler) {
-    let request = FactsRandomApiRequest()
+  func fetchByCategory(with category: String, completionHandler: @escaping FetchFactsEntityByCategoryGatewayCompletionHandler) {
+    let request = FactByCategoryApiRequest(category: category)
     apiClient.execute(request: request) { (result: Result<ApiResponse<ApiFact>>) in
       switch result {
       case let .success(response):

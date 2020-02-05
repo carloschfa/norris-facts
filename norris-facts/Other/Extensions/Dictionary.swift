@@ -18,11 +18,12 @@ public extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any {
   
   - returns: `Data` containing the serialized JSON or empty `Data` (e.g. `Data()`) if the serialization fails
   */
-  func toJsonData() -> Data {
+  func toJsonData() -> (data: Data?, error: Error?) {
     do {
-      return try JSONSerialization.data(withJSONObject: self, options: [])
+      if (self["errorTag"] as? String == "bad input") { throw SerializationError.badInput }
+      return (data: try JSONSerialization.data(withJSONObject: self, options: []), error: nil)
     } catch {
-      return Data()
+      return (data: nil, error: error)
     }
   }
 }

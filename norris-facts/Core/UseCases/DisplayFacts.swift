@@ -15,9 +15,9 @@ typealias DisplayFactsByCategoryCompletionHandler = (_ facts: Result<Fact>) -> V
 
 protocol DisplayFactsUseCase {
   func displayRandom(completionHandler: @escaping DisplayFactsUseCaseCompletionHandler)
-  func displayBySearch(completionHandler: @escaping DisplayFactsBySearchCompletionHandler)
+  func displayBySearch(with query: String, completionHandler: @escaping DisplayFactsBySearchCompletionHandler)
   func displayCategories(completionHandler: @escaping DisplayCategoriesCompletionHandler)
-  func displayByCategory(completionHandler: @escaping DisplayFactsByCategoryCompletionHandler)
+  func displayByCategory(with category: String, completionHandler: @escaping DisplayFactsByCategoryCompletionHandler)
 }
 
 class DisplayFactsUseCaseImplementation: DisplayFactsUseCase {
@@ -33,8 +33,8 @@ class DisplayFactsUseCaseImplementation: DisplayFactsUseCase {
     }
   }
 
-  func displayBySearch(completionHandler: @escaping DisplayFactsBySearchCompletionHandler) {
-    self.factsGateway.fetchBySearch { (result) in
+  func displayBySearch(with query: String, completionHandler: @escaping DisplayFactsBySearchCompletionHandler) {
+    self.factsGateway.fetchBySearch(with: query) { (result) in
       completionHandler(result)
     }
   }
@@ -45,8 +45,8 @@ class DisplayFactsUseCaseImplementation: DisplayFactsUseCase {
     }
   }
 
-  func displayByCategory(completionHandler: @escaping DisplayFactsByCategoryCompletionHandler) {
-    self.factsGateway.fetchByCategory { (result) in
+  func displayByCategory(with category: String, completionHandler: @escaping DisplayFactsByCategoryCompletionHandler) {
+    self.factsGateway.fetchByCategory(with: category) { (result) in
       completionHandler(result)
     }
   }

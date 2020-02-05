@@ -28,7 +28,7 @@ class FactsListRouterImplementation: FactsListRouter {
   }
 
   func presentShare(with text: String, and url: URL?) {
-    let items: [Any] = [text, url]
+    let items: [Any] = [text, url as Any]
     let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
     factsListViewController?.present(activityViewController, animated: true)
   }

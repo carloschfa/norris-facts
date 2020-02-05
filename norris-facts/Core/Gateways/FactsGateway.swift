@@ -15,7 +15,7 @@ typealias FetchFactsEntityByCategoryGatewayCompletionHandler = (_ facts: Result<
 
 protocol FactsGateway {
   func fetchRandom(completionHandler: @escaping FetchRandomFactEntityGatewayCompletionHandler)
-  func fetchBySearch(completionHandler: @escaping FetchFactsEntityBySearchGatewayCompletionHandler)
+  func fetchBySearch(with query: String, completionHandler: @escaping FetchFactsEntityBySearchGatewayCompletionHandler)
   func fetchCategories(completionHandler: @escaping FetchFactsCategoriesGatewayCompletionHandler)
-  func fetchByCategory(completionHandler: @escaping FetchFactsEntityByCategoryGatewayCompletionHandler)
+  func fetchByCategory(with category: String, completionHandler: @escaping FetchFactsEntityByCategoryGatewayCompletionHandler)
 }
