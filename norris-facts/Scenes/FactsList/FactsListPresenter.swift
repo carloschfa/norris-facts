@@ -55,7 +55,12 @@ class FactsListPresenterImplementation: FactsListPresenter {
 
   func configureCell(with cell: FactItemTableViewCell, forRow row: Int) {
     let fact = facts[row]
-    cell.setupCell(with: fact.value, and: URL(string: fact.url)!)
+    if let url = URL(string: fact.url) {
+      cell.setupCell(with: fact.value, and: url)
+    } else {
+      cell.setupCell(with: fact.value, and: URL(string: "http://google.com"))
+    }
+    
     cell.delegate = self
   }
   

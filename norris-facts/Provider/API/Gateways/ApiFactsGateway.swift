@@ -25,7 +25,9 @@ class ApiFactsGatewayImplementation: ApiFactsGateway {
       switch result {
       case let .success(response):
         let fact = response.entity.fact
-        completionHandler(.success(fact))
+        apiCoreDataFactsProvider?.insert(fact: fact)
+        guard let facts = apiCoreDataFactsProvider?.get() else { return }
+        completionHandler(.success(facts))
       case let .failure(error):
         completionHandler(.failure(error))
       }
@@ -38,7 +40,9 @@ class ApiFactsGatewayImplementation: ApiFactsGateway {
     apiClient.execute(request: request) { (result: Result<ApiResponse<ApiFactResponse>>) in
       switch result {
       case let .success(response):
-        let facts = response.entity.facts.map { return $0.fact }
+        guard let localFacts = apiCoreDataFactsProvider?.get() else { return }
+        var facts = response.entity.facts.map { return $0.fact }
+        facts.append(contentsOf: localFacts)
         completionHandler(.success(facts))
       case let .failure(error):
         completionHandler(.failure(error))

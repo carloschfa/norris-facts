@@ -16,6 +16,7 @@ class FactsSearchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     setupUI()
     // Do any additional setup after loading the view.
   }

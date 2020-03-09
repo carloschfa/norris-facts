@@ -18,6 +18,10 @@ class FactsListTableViewController: UITableViewController {
     configurator.configure(with: self)
     setupUI()
     presenter.viewDidLoad()
+    
+    
+    // let fact = Fact(id: "2", value: "Teste de Value 2", url: "url teste 2", categories: ["Teste de categoria 2"])
+    // apiFactsGatewayCoreData?.insert(fact: fact)
   }
 
   private func setupUI() {

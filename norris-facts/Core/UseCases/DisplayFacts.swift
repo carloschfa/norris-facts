@@ -30,7 +30,8 @@ class DisplayFactsUseCaseImplementation: DisplayFactsUseCase {
   func displayRandom(completionHandler: @escaping DisplayFactsUseCaseCompletionHandler) {
     self.factsGateway.fetchRandom { (result) in
       switch result {
-      case .success(let fact):
+      case .success(let facts):
+        completionHandler(.success(facts))
         print("teste")
         /*if var facts = userDefaults.array(forKey: "facts") as? [Fact] {
           facts.append(fact)

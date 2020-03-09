@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias FetchRandomFactEntityGatewayCompletionHandler = (_ fact: Result<Fact>) -> Void
+typealias FetchRandomFactEntityGatewayCompletionHandler = (_ fact: Result<[Fact]>) -> Void
 typealias FetchFactsEntityBySearchGatewayCompletionHandler = (_ facts: Result<[Fact]>) -> Void
 typealias FetchFactsCategoriesGatewayCompletionHandler = (_ categories: Result<[String]>) -> Void
 typealias FetchFactsEntityByCategoryGatewayCompletionHandler = (_ facts: Result<Fact>) -> Void

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 
 
-var apiFactsGatewayCoreData: ApiFactsGatewayCoreData?
+var apiCoreDataFactsProvider: ApiCoreDataFactsProvider?
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -69,7 +69,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
               fatalError("Unresolved error \(error), \(error.userInfo)")
           }
       })
-    apiFactsGatewayCoreData = ApiFactsGatewayCoreData(appDelegate: UIApplication.shared.delegate as! AppDelegate, managedContext: container.viewContext)
+    apiCoreDataFactsProvider = ApiCoreDataFactsProvider(appDelegate: UIApplication.shared.delegate as! AppDelegate, managedContext: container.viewContext)
       return container
   }()
   
