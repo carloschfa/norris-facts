@@ -15,7 +15,7 @@ class ApiCoreDataFactsProvider {
   
   private struct Entities {
     static let Facts: String = "Facts"
-    static let Categories: String = "Categories"
+    static let Searches: String = "Searches"
   }
   
   private struct Keys {
@@ -23,21 +23,60 @@ class ApiCoreDataFactsProvider {
     static let Value: String = "value"
     static let Url: String = "url"
     static let Categories: String = "categories"
+    static let SearchedAt: String = "searchedAt"
   }
   
   private let appDelegate: AppDelegate
   private let managedContext: NSManagedObjectContext
   private let factsEntity: NSEntityDescription
-  private let categoriesEntity: NSEntityDescription
+  private let searchesEntity: NSEntityDescription
   
   init(appDelegate: AppDelegate, managedContext: NSManagedObjectContext) {
     self.appDelegate = appDelegate
     self.managedContext = managedContext
     self.factsEntity = NSEntityDescription.entity(forEntityName: Entities.Facts, in: self.managedContext)!
-    self.categoriesEntity = NSEntityDescription.entity(forEntityName: Entities.Categories, in: self.managedContext)!
+    self.searchesEntity = NSEntityDescription.entity(forEntityName: Entities.Searches, in: self.managedContext)!
   }
   
-  func get() -> [Fact] {
+  // MARK: - Categories Methods
+  func getSearches() -> [Search] {
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.Searches)
+    
+    do {
+      let fetchedResult = try managedContext.fetch(request)
+      guard let result = fetchedResult as? [NSManagedObject] else { return [] }
+      var searches: [Search] = []
+      for data in result {
+        guard
+          let value = data.value(forKey: Keys.Value) as? String,
+          let searchedAt = data.value(forKey: Keys.SearchedAt) as? Date else { return [] }
+        let search = Search(value: value, searchedAt: searchedAt)
+        searches.append(search)
+      }
+      return searches
+    } catch let error {
+      NSLog("\(error.localizedDescription)")
+      return []
+    }
+  }
+  
+  func insert(search: Search) {
+    
+    if self.checkIfExists(using: Entities.Searches, where: Keys.Value, equals: search.value) == false {
+      let searchObject = NSManagedObject(entity: searchesEntity, insertInto: managedContext)
+      searchObject.setValue(search.value, forKey: Keys.Value)
+      searchObject.setValue(search.searchedAt, forKey: Keys.SearchedAt)
+      
+      do {
+        try managedContext.save()
+      } catch let error {
+        NSLog("\(error.localizedDescription)")
+      }
+    }
+  }
+  
+  // MARK: - Facts Methods
+  func getFacts() -> [Fact] {
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.Facts)
     
     do {

@@ -49,6 +49,7 @@
 		46A7E23823EC53CB0064AC3A /* PastSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7E23623EC53CB0064AC3A /* PastSearchTableViewCell.swift */; };
 		46A7E23923EC53CB0064AC3A /* PastSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46A7E23723EC53CB0064AC3A /* PastSearchTableViewCell.xib */; };
 		46A814682412EE370060B3C0 /* norrisFactsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46A814662412EE370060B3C0 /* norrisFactsModel.xcdatamodeld */; };
+		46F02DA32416D02700E53097 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46F02DA22416D02700E53097 /* Search.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,6 +118,7 @@
 		46A7E23623EC53CB0064AC3A /* PastSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastSearchTableViewCell.swift; sourceTree = "<group>"; };
 		46A7E23723EC53CB0064AC3A /* PastSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PastSearchTableViewCell.xib; sourceTree = "<group>"; };
 		46A814672412EE370060B3C0 /* norrisFactsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = norrisFactsModel.xcdatamodel; sourceTree = "<group>"; };
+		46F02DA22416D02700E53097 /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				46453DB623DF6C900077EA84 /* Fact.swift */,
+				46F02DA22416D02700E53097 /* Search.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				46453DDD23E06DD30077EA84 /* FactsSearchViewController.swift in Sources */,
 				46A7E23423EC53330064AC3A /* SuggestionCollectionViewCell.swift in Sources */,
 				46453DB723DF6C900077EA84 /* Fact.swift in Sources */,
+				46F02DA32416D02700E53097 /* Search.swift in Sources */,
 				46453DD823E06DA50077EA84 /* FactsListConfigurator.swift in Sources */,
 				4659403423E35D14007E7B88 /* FactItemTableViewCell.swift in Sources */,
 			);
