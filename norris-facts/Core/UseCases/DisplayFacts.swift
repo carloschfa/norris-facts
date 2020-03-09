@@ -8,7 +8,7 @@
 
 import Foundation
 
-typealias DisplayFactsUseCaseCompletionHandler = (_ fact: Result<Fact>) -> Void
+typealias DisplayFactsUseCaseCompletionHandler = (_ fact: Result<[Fact]>) -> Void
 typealias DisplayFactsBySearchCompletionHandler = (_ facts: Result<[Fact]>) -> Void
 typealias DisplayCategoriesCompletionHandler = (_ categories: Result<[String]>) -> Void
 typealias DisplayFactsByCategoryCompletionHandler = (_ facts: Result<Fact>) -> Void
@@ -29,7 +29,22 @@ class DisplayFactsUseCaseImplementation: DisplayFactsUseCase {
 
   func displayRandom(completionHandler: @escaping DisplayFactsUseCaseCompletionHandler) {
     self.factsGateway.fetchRandom { (result) in
-      completionHandler(result)
+      switch result {
+      case .success(let fact):
+        print("teste")
+        /*if var facts = userDefaults.array(forKey: "facts") as? [Fact] {
+          facts.append(fact)
+          userDefaults.setValue(facts, forKey: "facts")
+          completionHandler(.success(facts))
+        } else {
+          userDefaults.setValue([fact], forKey: "facts")
+          completionHandler(.success([fact]))
+        }*/
+      case .failure(let error):
+        NSLog(error.localizedDescription)
+      }
+      
+      
     }
   }
 

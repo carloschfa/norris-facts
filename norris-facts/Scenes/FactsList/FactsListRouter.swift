@@ -12,11 +12,12 @@ import UIKit
 protocol FactsListRouter {
   func presentSearch()
   func presentShare(with text: String, and url: URL?)
+  var factsListViewController: FactsListTableViewController? { get }
 }
 
 class FactsListRouterImplementation: FactsListRouter {
 
-  fileprivate weak var factsListViewController: FactsListTableViewController?
+  var factsListViewController: FactsListTableViewController?
 
   init(factsListViewController: FactsListTableViewController) {
     self.factsListViewController = factsListViewController

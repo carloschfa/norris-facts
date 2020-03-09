@@ -10,21 +10,36 @@ import UIKit
 
 class FactsSearchViewController: UIViewController {
 
+  @IBOutlet weak var searchBar: UISearchBar!
+  @IBOutlet weak var suggestionsCollectionView: UICollectionView!
+  @IBOutlet weak var pastSearchesTableView: UITableView!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    setupUI()
     // Do any additional setup after loading the view.
   }
+  
+  private func setupUI() {
+    let suggestionCellNib = UINib(nibName: "SuggestionCollectionViewCell", bundle: Bundle.main)
+    self.suggestionsCollectionView.register(suggestionCellNib, forCellWithReuseIdentifier: "SuggestionCollectionViewCell")
+    
+    let pastSearchesCellNib = UINib(nibName: "PastSearchTableViewCell", bundle: Bundle.main)
+    self.pastSearchesTableView.register(pastSearchesCellNib, forCellReuseIdentifier: "PastSearchTableViewCell")
+    
+    searchBar.delegate = self
+    suggestionsCollectionView.delegate = self
+    suggestionsCollectionView.dataSource = self
+    pastSearchesTableView.delegate = self
+    pastSearchesTableView.dataSource =  self
+    
+    (suggestionsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout)?.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+  }
 
+}
 
-  /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+extension FactsSearchViewController: UISearchBarDelegate { 
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    print("touced to search -> \(searchBar.text)")
+  }
 }

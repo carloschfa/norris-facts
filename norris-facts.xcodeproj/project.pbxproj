@@ -36,10 +36,19 @@
 		46453DE423E06E060077EA84 /* FactsSearchConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46453DE323E06E060077EA84 /* FactsSearchConfigurator.swift */; };
 		4659403423E35D14007E7B88 /* FactItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659403223E35D14007E7B88 /* FactItemTableViewCell.swift */; };
 		4659403523E35D14007E7B88 /* FactItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4659403323E35D14007E7B88 /* FactItemTableViewCell.xib */; };
+		466585F02416845700374894 /* ApiFactsGatewayCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 466585EF2416845700374894 /* ApiFactsGatewayCoreData.swift */; };
 		46A769A123EB3C6600167F73 /* CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A769A023EB3C6600167F73 /* CoreTests.swift */; };
 		46A769A323EB4A1D00167F73 /* ApiFactResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A769A223EB4A1D00167F73 /* ApiFactResponse.swift */; };
 		46A769A523EB508D00167F73 /* ProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A769A423EB508D00167F73 /* ProviderTests.swift */; };
 		46A769A823EB573100167F73 /* ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A769A723EB573100167F73 /* ExtensionsTests.swift */; };
+		46A7E22923EC37F20064AC3A /* FactsListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7E22823EC37F20064AC3A /* FactsListTests.swift */; };
+		46A7E22D23EC50BC0064AC3A /* PastSearchesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7E22C23EC50BC0064AC3A /* PastSearchesTableView.swift */; };
+		46A7E22F23EC50D10064AC3A /* SuggestionsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7E22E23EC50D10064AC3A /* SuggestionsCollectionView.swift */; };
+		46A7E23423EC53330064AC3A /* SuggestionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7E23223EC53320064AC3A /* SuggestionCollectionViewCell.swift */; };
+		46A7E23523EC53330064AC3A /* SuggestionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46A7E23323EC53320064AC3A /* SuggestionCollectionViewCell.xib */; };
+		46A7E23823EC53CB0064AC3A /* PastSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A7E23623EC53CB0064AC3A /* PastSearchTableViewCell.swift */; };
+		46A7E23923EC53CB0064AC3A /* PastSearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 46A7E23723EC53CB0064AC3A /* PastSearchTableViewCell.xib */; };
+		46A814682412EE370060B3C0 /* norrisFactsModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 46A814662412EE370060B3C0 /* norrisFactsModel.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,10 +104,19 @@
 		46453DE323E06E060077EA84 /* FactsSearchConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsSearchConfigurator.swift; sourceTree = "<group>"; };
 		4659403223E35D14007E7B88 /* FactItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactItemTableViewCell.swift; sourceTree = "<group>"; };
 		4659403323E35D14007E7B88 /* FactItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FactItemTableViewCell.xib; sourceTree = "<group>"; };
+		466585EF2416845700374894 /* ApiFactsGatewayCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiFactsGatewayCoreData.swift; sourceTree = "<group>"; };
 		46A769A023EB3C6600167F73 /* CoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTests.swift; sourceTree = "<group>"; };
 		46A769A223EB4A1D00167F73 /* ApiFactResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiFactResponse.swift; sourceTree = "<group>"; };
 		46A769A423EB508D00167F73 /* ProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProviderTests.swift; sourceTree = "<group>"; };
 		46A769A723EB573100167F73 /* ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionsTests.swift; sourceTree = "<group>"; };
+		46A7E22823EC37F20064AC3A /* FactsListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsListTests.swift; sourceTree = "<group>"; };
+		46A7E22C23EC50BC0064AC3A /* PastSearchesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastSearchesTableView.swift; sourceTree = "<group>"; };
+		46A7E22E23EC50D10064AC3A /* SuggestionsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionsCollectionView.swift; sourceTree = "<group>"; };
+		46A7E23223EC53320064AC3A /* SuggestionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionCollectionViewCell.swift; sourceTree = "<group>"; };
+		46A7E23323EC53320064AC3A /* SuggestionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SuggestionCollectionViewCell.xib; sourceTree = "<group>"; };
+		46A7E23623EC53CB0064AC3A /* PastSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastSearchTableViewCell.swift; sourceTree = "<group>"; };
+		46A7E23723EC53CB0064AC3A /* PastSearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PastSearchTableViewCell.xib; sourceTree = "<group>"; };
+		46A814672412EE370060B3C0 /* norrisFactsModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = norrisFactsModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +184,7 @@
 		46453D8B23DF603B0077EA84 /* norris-factsTests */ = {
 			isa = PBXGroup;
 			children = (
+				46A7E22623EC37D70064AC3A /* Scenes */,
 				46A769A623EB571A00167F73 /* ExtensionTests */,
 				46A7699E23EA053B00167F73 /* CoreTests */,
 				46A7699F23EA054600167F73 /* ProviderTests */,
@@ -187,6 +206,7 @@
 		46453DAB23DF63870077EA84 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				46A814652412EDF40060B3C0 /* LocalStorage */,
 				46453DAC23DF6B620077EA84 /* Entities */,
 				46453DAD23DF6B6B0077EA84 /* Gateways */,
 				46453DAE23DF6B720077EA84 /* UseCases */,
@@ -239,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				46453DBF23DF762C0077EA84 /* ApiFactsGateway.swift */,
+				466585EF2416845700374894 /* ApiFactsGatewayCoreData.swift */,
 			);
 			path = Gateways;
 			sourceTree = "<group>";
@@ -305,6 +326,8 @@
 		46453DD023DF7D400077EA84 /* FactsSearch */ = {
 			isa = PBXGroup;
 			children = (
+				46A7E22B23EC50950064AC3A /* CollectionView */,
+				46A7E22A23EC50860064AC3A /* TableView */,
 				46453DDB23E06DD30077EA84 /* FactsSearchViewController.swift */,
 				46453DDC23E06DD30077EA84 /* FactsSearchViewController.xib */,
 				46453DDF23E06DE60077EA84 /* FactsSearchPresenter.swift */,
@@ -345,6 +368,66 @@
 				46A769A723EB573100167F73 /* ExtensionsTests.swift */,
 			);
 			path = ExtensionTests;
+			sourceTree = "<group>";
+		};
+		46A7E22623EC37D70064AC3A /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				46A7E22723EC37E10064AC3A /* FactsList */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		46A7E22723EC37E10064AC3A /* FactsList */ = {
+			isa = PBXGroup;
+			children = (
+				46A7E22823EC37F20064AC3A /* FactsListTests.swift */,
+			);
+			path = FactsList;
+			sourceTree = "<group>";
+		};
+		46A7E22A23EC50860064AC3A /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				46A7E23123EC51590064AC3A /* Cells */,
+				46A7E22C23EC50BC0064AC3A /* PastSearchesTableView.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
+		46A7E22B23EC50950064AC3A /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				46A7E23023EC51530064AC3A /* Cells */,
+				46A7E22E23EC50D10064AC3A /* SuggestionsCollectionView.swift */,
+			);
+			path = CollectionView;
+			sourceTree = "<group>";
+		};
+		46A7E23023EC51530064AC3A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				46A7E23223EC53320064AC3A /* SuggestionCollectionViewCell.swift */,
+				46A7E23323EC53320064AC3A /* SuggestionCollectionViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		46A7E23123EC51590064AC3A /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				46A7E23623EC53CB0064AC3A /* PastSearchTableViewCell.swift */,
+				46A7E23723EC53CB0064AC3A /* PastSearchTableViewCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		46A814652412EDF40060B3C0 /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				46A814662412EE370060B3C0 /* norrisFactsModel.xcdatamodeld */,
+			);
+			path = LocalStorage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -451,6 +534,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46A7E23523EC53330064AC3A /* SuggestionCollectionViewCell.xib in Resources */,
+				46A7E23923EC53CB0064AC3A /* PastSearchTableViewCell.xib in Resources */,
 				4659403523E35D14007E7B88 /* FactItemTableViewCell.xib in Resources */,
 				46453D8223DF603B0077EA84 /* LaunchScreen.storyboard in Resources */,
 				46453DDE23E06DD30077EA84 /* FactsSearchViewController.xib in Resources */,
@@ -484,22 +569,28 @@
 				46453DC623DF76EE0077EA84 /* ApiClient.swift in Sources */,
 				46453DCC23DF78400077EA84 /* FactsApiRequest.swift in Sources */,
 				46453DB923DF6CAF0077EA84 /* FactsGateway.swift in Sources */,
+				46A7E22F23EC50D10064AC3A /* SuggestionsCollectionView.swift in Sources */,
 				46453DCE23DF7B300077EA84 /* Result.swift in Sources */,
 				46453DBB23DF6CCF0077EA84 /* DisplayFacts.swift in Sources */,
 				46453DC823DF77350077EA84 /* Dictionary.swift in Sources */,
+				466585F02416845700374894 /* ApiFactsGatewayCoreData.swift in Sources */,
 				46453DDA23E06DAF0077EA84 /* FactsListRouter.swift in Sources */,
 				46453DD623E06D7A0077EA84 /* FactsListPresenter.swift in Sources */,
 				46453D7623DF60390077EA84 /* AppDelegate.swift in Sources */,
 				46453DE223E06DFA0077EA84 /* FactsSearchRouter.swift in Sources */,
+				46A7E23823EC53CB0064AC3A /* PastSearchTableViewCell.swift in Sources */,
 				46453D7823DF60390077EA84 /* SceneDelegate.swift in Sources */,
 				46453DC023DF762C0077EA84 /* ApiFactsGateway.swift in Sources */,
 				46453DC223DF76D50077EA84 /* ApiResponse.swift in Sources */,
 				46A769A323EB4A1D00167F73 /* ApiFactResponse.swift in Sources */,
+				46A7E22D23EC50BC0064AC3A /* PastSearchesTableView.swift in Sources */,
 				46453DCA23DF773C0077EA84 /* Array.swift in Sources */,
 				46453DBE23DF74EC0077EA84 /* ApiFact.swift in Sources */,
+				46A814682412EE370060B3C0 /* norrisFactsModel.xcdatamodeld in Sources */,
 				46453DE023E06DE60077EA84 /* FactsSearchPresenter.swift in Sources */,
 				46453DE423E06E060077EA84 /* FactsSearchConfigurator.swift in Sources */,
 				46453DDD23E06DD30077EA84 /* FactsSearchViewController.swift in Sources */,
+				46A7E23423EC53330064AC3A /* SuggestionCollectionViewCell.swift in Sources */,
 				46453DB723DF6C900077EA84 /* Fact.swift in Sources */,
 				46453DD823E06DA50077EA84 /* FactsListConfigurator.swift in Sources */,
 				4659403423E35D14007E7B88 /* FactItemTableViewCell.swift in Sources */,
@@ -510,6 +601,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46A7E22923EC37F20064AC3A /* FactsListTests.swift in Sources */,
 				46A769A523EB508D00167F73 /* ProviderTests.swift in Sources */,
 				46A769A123EB3C6600167F73 /* CoreTests.swift in Sources */,
 				46453D8D23DF603B0077EA84 /* norris_factsTests.swift in Sources */,
@@ -826,6 +918,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		46A814662412EE370060B3C0 /* norrisFactsModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				46A814672412EE370060B3C0 /* norrisFactsModel.xcdatamodel */,
+			);
+			currentVersion = 46A814672412EE370060B3C0 /* norrisFactsModel.xcdatamodel */;
+			path = norrisFactsModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 46453D6A23DF60390077EA84 /* Project object */;
 }

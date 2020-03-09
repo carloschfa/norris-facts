@@ -44,7 +44,7 @@ class FactsListPresenterImplementation: FactsListPresenter {
     self.displayFactsUseCase.displayRandom { (result) in
       switch result {
       case let .success(fact):
-        self.handleFactsReceived([fact])
+        self.handleFactsReceived(fact)
         self.view?.isLoading(false)
       case let .failure(error):
         self.handleFactsError(error)
