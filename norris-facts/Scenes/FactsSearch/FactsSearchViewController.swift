@@ -8,7 +8,11 @@
 
 import UIKit
 
+#warning("CHECKPOINT: IMPLEMENTING SEARCH MODULE STRUCTURE.")
 class FactsSearchViewController: UIViewController {
+  
+  var configurator = FactsListConfiguratorImplementation()
+  var presenter: FactsListPresenter!
 
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var suggestionsCollectionView: UICollectionView!

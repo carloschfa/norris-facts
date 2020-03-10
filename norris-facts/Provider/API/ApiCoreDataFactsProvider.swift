@@ -76,8 +76,13 @@ class ApiCoreDataFactsProvider {
   }
   
   // MARK: - Facts Methods
-  func getFacts() -> [Fact] {
+  func getFacts(where query: String = "") -> [Fact] {
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: Entities.Facts)
+    
+    if query != "" {
+      let predicate = NSPredicate(format: "value CONTAINS[c] %@", query)
+      request.predicate = predicate
+    }
     
     do {
       let fetchedResult = try managedContext.fetch(request)
