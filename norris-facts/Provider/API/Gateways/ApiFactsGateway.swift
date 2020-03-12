@@ -36,14 +36,16 @@ class ApiFactsGatewayImplementation: ApiFactsGateway {
   }
 
   func fetchBySearch(with query: String, completionHandler: @escaping FetchFactsEntityBySearchGatewayCompletionHandler) {
+    apiCoreDataFactsProvider?.insert(search: Search(value: query, searchedAt: Date()))
+    
     let request = FactsBySearchApiRequest(query: query)
-    apiClient.execute(request: request) { (result: Result<ApiResponse<ApiFactResponse>>) in
+    apiClient.execute(request: request) { (result: Result<ApiResponse<[ApiFact]>>) in
       switch result {
       case let .success(response):
+        let facts = response.entity.map { return $0.fact }
+        facts.forEach { apiCoreDataFactsProvider?.insert(fact: $0) }
         guard let localFacts = apiCoreDataFactsProvider?.getFacts(where: query) else { return }
-        var facts = response.entity.facts.map { return $0.fact }
-        facts.append(contentsOf: localFacts)
-        completionHandler(.success(facts))
+        completionHandler(.success(localFacts))
       case let .failure(error):
         completionHandler(.failure(error))
       }
@@ -51,16 +53,28 @@ class ApiFactsGatewayImplementation: ApiFactsGateway {
   }
 
   func fetchCategories(completionHandler: @escaping FetchFactsCategoriesGatewayCompletionHandler) {
+    
     let request = CategoriesApiRequest()
-    apiClient.execute(request: request) { (result: Result<ApiResponse<[String]>>) in
-      switch result {
-      case let .success(response):  
-        let fact = response.entity.map { return $0 }
-        completionHandler(.success(fact))
-      case let .failure(error):
-        completionHandler(.failure(error))
+    guard let localCategories = apiCoreDataFactsProvider?.getCategories() else { return }
+    if localCategories.isEmpty {
+      apiClient.execute(request: request) { (result: Result<ApiResponse<[String]>>) in
+        switch result {
+        case let .success(response):
+          let categories = response.entity.map { return Category(value: $0) }
+          categories.forEach { apiCoreDataFactsProvider?.insert(category: $0) }
+          completionHandler(.success(categories))
+        case let .failure(error):
+          completionHandler(.failure(error))
+        }
       }
+    } else {
+      completionHandler(.success(localCategories))
     }
+  }
+  
+  func fetchSearches(completionHandler: @escaping FetchFactsSearchesGatewayCompletionHandler) {
+    guard let searches = apiCoreDataFactsProvider?.getSearches() else { return }
+    completionHandler(.success(searches))
   }
 
   func fetchByCategory(with category: String, completionHandler: @escaping FetchFactsEntityByCategoryGatewayCompletionHandler) {

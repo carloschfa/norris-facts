@@ -11,8 +11,8 @@ import UIKit
 #warning("CHECKPOINT: IMPLEMENTING SEARCH MODULE STRUCTURE.")
 class FactsSearchViewController: UIViewController {
   
-  var configurator = FactsListConfiguratorImplementation()
-  var presenter: FactsListPresenter!
+  var configurator = FactsSearchConfiguratorImplementation()
+  var presenter: FactsSearchPresenter!
 
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var suggestionsCollectionView: UICollectionView!
@@ -20,7 +20,7 @@ class FactsSearchViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    configurator.configure(with: self)
     setupUI()
     // Do any additional setup after loading the view.
   }
@@ -46,5 +46,11 @@ class FactsSearchViewController: UIViewController {
 extension FactsSearchViewController: UISearchBarDelegate { 
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     print("touced to search -> \(searchBar.text)")
+  }
+}
+
+extension FactsSearchViewController: FactsSearchView {
+  func isLoading(_ value: Bool) {
+    
   }
 }

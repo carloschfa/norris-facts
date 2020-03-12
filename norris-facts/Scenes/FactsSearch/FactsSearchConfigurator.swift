@@ -17,13 +17,15 @@ class FactsSearchConfiguratorImplementation: FactsSearchConfigurator {
     let apiClient = ApiClientImplementation(urlSessionConfiguration: .default, completionHandlerQueue: .main)
     let apiFactsGateway = ApiFactsGatewayImplementation(apiClient: apiClient)
 
-    // let displayFactsUseCase = DisplayFactsUseCaseImplementation(factsGateway: apiFactsGateway)
+    let displayFactsUseCase = DisplayFactsUseCaseImplementation(factsGateway: apiFactsGateway)
 
-    let router = FactsListRouterImplementation(factsListViewController: factsListViewController)
+    let router  = FactsSearchRouterImplementation()
 
-    let presenter = FactsListPresenterImplementation(view: factsListViewController, displayFactsUseCase: displayFactsUseCase, router: router)
-
-    factsListViewController.presenter = presenter
+    let presenter = FactsSearchPresenterImplementation(view: factsSearchViewController,
+                                                       displayFactsUseCase: displayFactsUseCase,
+                                                       router: router)
+    
+    factsSearchViewController.presenter = presenter
   }
 
 }

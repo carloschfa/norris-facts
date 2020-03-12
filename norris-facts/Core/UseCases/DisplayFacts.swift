@@ -10,13 +10,15 @@ import Foundation
 
 typealias DisplayFactsUseCaseCompletionHandler = (_ fact: Result<[Fact]>) -> Void
 typealias DisplayFactsBySearchCompletionHandler = (_ facts: Result<[Fact]>) -> Void
-typealias DisplayCategoriesCompletionHandler = (_ categories: Result<[String]>) -> Void
+typealias DisplayCategoriesCompletionHandler = (_ categories: Result<[Category]>) -> Void
+typealias DisplaySearchesCompletionHandler = (_ searches: Result<[Search]>) -> Void
 typealias DisplayFactsByCategoryCompletionHandler = (_ facts: Result<Fact>) -> Void
 
 protocol DisplayFactsUseCase {
   func displayRandom(completionHandler: @escaping DisplayFactsUseCaseCompletionHandler)
   func displayBySearch(with query: String, completionHandler: @escaping DisplayFactsBySearchCompletionHandler)
   func displayCategories(completionHandler: @escaping DisplayCategoriesCompletionHandler)
+  func displaySearches(completionHandler: @escaping DisplaySearchesCompletionHandler)
   func displayByCategory(with category: String, completionHandler: @escaping DisplayFactsByCategoryCompletionHandler)
 }
 
@@ -32,15 +34,6 @@ class DisplayFactsUseCaseImplementation: DisplayFactsUseCase {
       switch result {
       case .success(let facts):
         completionHandler(.success(facts))
-        print("teste")
-        /*if var facts = userDefaults.array(forKey: "facts") as? [Fact] {
-          facts.append(fact)
-          userDefaults.setValue(facts, forKey: "facts")
-          completionHandler(.success(facts))
-        } else {
-          userDefaults.setValue([fact], forKey: "facts")
-          completionHandler(.success([fact]))
-        }*/
       case .failure(let error):
         NSLog(error.localizedDescription)
       }
@@ -57,6 +50,12 @@ class DisplayFactsUseCaseImplementation: DisplayFactsUseCase {
 
   func displayCategories(completionHandler: @escaping DisplayCategoriesCompletionHandler) {
     self.factsGateway.fetchCategories { (result) in
+      completionHandler(result)
+    }
+  }
+  
+  func displaySearches(completionHandler: @escaping DisplaySearchesCompletionHandler) {
+    self.factsGateway.fetchSearches { (result) in
       completionHandler(result)
     }
   }

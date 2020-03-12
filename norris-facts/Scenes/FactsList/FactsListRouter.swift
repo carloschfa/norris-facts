@@ -24,8 +24,8 @@ class FactsListRouterImplementation: FactsListRouter {
   }
 
   func presentSearch() {
-    let factsSearch = FactsSearchViewController()
-    factsListViewController?.navigationController?.pushViewController(factsSearch, animated: true)
+    let router = FactsSearchRouterImplementation()
+    router.presentSearch(from: factsListViewController)
   }
 
   func presentShare(with text: String, and url: URL?) {

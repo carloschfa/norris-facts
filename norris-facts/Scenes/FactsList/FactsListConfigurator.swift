@@ -16,7 +16,7 @@ class FactsListConfiguratorImplementation: FactsListConfigurator {
   func configure(with factsListViewController: FactsListTableViewController) {
     let apiClient = ApiClientImplementation(urlSessionConfiguration: .default, completionHandlerQueue: .main)
     let apiFactsGateway = ApiFactsGatewayImplementation(apiClient: apiClient)
-
+    
     let displayFactsUseCase = DisplayFactsUseCaseImplementation(factsGateway: apiFactsGateway)
 
     let router = FactsListRouterImplementation(factsListViewController: factsListViewController)

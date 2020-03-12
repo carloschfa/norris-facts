@@ -58,7 +58,7 @@ class FactsListPresenterImplementation: FactsListPresenter {
     if let url = URL(string: fact.url) {
       cell.setupCell(with: fact.value, and: url)
     } else {
-      cell.setupCell(with: fact.value, and: URL(string: "http://google.com"))
+      cell.setupCell(with: fact.value, and: URL(string: "http://github.com/carloschfa"))
     }
     
     cell.delegate = self
