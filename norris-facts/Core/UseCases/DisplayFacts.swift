@@ -31,14 +31,7 @@ class DisplayFactsUseCaseImplementation: DisplayFactsUseCase {
 
   func displayRandom(completionHandler: @escaping DisplayFactsUseCaseCompletionHandler) {
     self.factsGateway.fetchRandom { (result) in
-      switch result {
-      case .success(let facts):
-        completionHandler(.success(facts))
-      case .failure(let error):
-        NSLog(error.localizedDescription)
-      }
-      
-      
+      completionHandler(result)
     }
   }
 

@@ -89,7 +89,9 @@ extension FactsListTableViewController: FactsListView {
   }
 
   func displayFactsRetrievalError(title: String, message: String) {
-    print("Error -> \(message)")
+    let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel,  handler: nil))
+    present(alertView, animated: true, completion: nil)
   }
   
   func isLoading(_ value: Bool) {

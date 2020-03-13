@@ -15,7 +15,7 @@ enum ResultType {
 
 protocol FactsSearchView: class {
   func refreshSearchView(for: ResultType)
-  // func displayFactsRetrievalError(title: String, message: String)
+  func displaySearchRetrievalError(title: String, message: String)
   func isLoading(_ value: Bool)
 }
 
@@ -60,10 +60,9 @@ class FactsSearchPresenterImplementation: FactsSearchPresenter {
         self.categories = categories
         self.view?.refreshSearchView(for: .categories)
         self.view?.isLoading(false)
-        print("contagem de categories -> \(categories.count)")
       case .failure(let error):
-        NSLog(error.localizedDescription)
         self.view?.isLoading(false)
+        self.view?.displaySearchRetrievalError(title: "Error", message: error.localizedDescription)
       }
     }
     
@@ -72,9 +71,9 @@ class FactsSearchPresenterImplementation: FactsSearchPresenter {
       case .success(let searches):
         self.searches = searches
         self.view?.refreshSearchView(for: .searches)
-        print("contagem de searches -> \(searches.count)")
       case .failure(let error):
-        NSLog(error.localizedDescription)
+        self.view?.isLoading(false)
+        self.view?.displaySearchRetrievalError(title: "Error", message: error.localizedDescription)
       }
     }
   }
@@ -100,13 +99,12 @@ class FactsSearchPresenterImplementation: FactsSearchPresenter {
     self.displayFactsUseCase.displayBySearch(with: query) { (result) in
       switch result {
       case .success(let facts):
-        print(facts)
         self.listPresenter?.reloadFacts(with: facts)
         self.view?.isLoading(false)
         self.router.presentList()
       case .failure(let error):
-        NSLog(error.localizedDescription)
         self.view?.isLoading(false)
+        self.view?.displaySearchRetrievalError(title: "Error", message: error.localizedDescription)
       }
     }
   }

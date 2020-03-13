@@ -21,13 +21,11 @@ class FactsSearchViewController: UIViewController {
   
   
   override func viewDidLoad() {
-    print(#function)
     super.viewDidLoad()
     configurator.configure(with: self)
     setupUI()
     presenter.defineListPresenter(using: listPresenter)
     presenter.viewDidLoad()
-    // Do any additional setup after loading the view.
   }
   
   private func setupUI() {
@@ -74,5 +72,11 @@ extension FactsSearchViewController: FactsSearchView {
       self.pastSearchesTableView.reloadData()
     }
     
+  }
+  
+  func displaySearchRetrievalError(title: String, message: String) {
+    let alertView = UIAlertController(title: title, message: message, preferredStyle: .alert)
+    alertView.addAction(UIAlertAction(title: "Ok", style: .cancel,  handler: nil))
+    present(alertView, animated: true, completion: nil)
   }
 }
