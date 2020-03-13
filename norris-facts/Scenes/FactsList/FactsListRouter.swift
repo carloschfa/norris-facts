@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol FactsListRouter {
-  func presentSearch()
+  func presentSearch(using presenter: FactsListPresenter)
   func presentShare(with text: String, and url: URL?)
   var factsListViewController: FactsListTableViewController? { get }
 }
@@ -23,9 +23,9 @@ class FactsListRouterImplementation: FactsListRouter {
     self.factsListViewController = factsListViewController
   }
 
-  func presentSearch() {
+  func presentSearch(using presenter: FactsListPresenter) {
     let router = FactsSearchRouterImplementation()
-    router.presentSearch(from: factsListViewController)
+    router.presentSearch(from: factsListViewController, using: presenter)
   }
 
   func presentShare(with text: String, and url: URL?) {

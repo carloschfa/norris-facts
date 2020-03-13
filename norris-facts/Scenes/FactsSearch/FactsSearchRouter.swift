@@ -11,7 +11,7 @@ import UIKit
 
 protocol FactsSearchRouter {
   func presentList()
-  func presentSearch(from viewController: UIViewController?)
+  func presentSearch(from viewController: UIViewController?, using presenter: FactsListPresenter)
   var factsSearchViewController: FactsSearchViewController? { get }
 }
 
@@ -23,8 +23,9 @@ class FactsSearchRouterImplementation: FactsSearchRouter {
     
   }
 
-  func presentSearch(from viewController: UIViewController?) {
+  func presentSearch(from viewController: UIViewController?, using presenter: FactsListPresenter) {
     let factsSearch = FactsSearchViewController()
+    factsSearch.listPresenter = presenter
     viewController?.navigationController?.pushViewController(factsSearch, animated: true)
   }
   

@@ -19,13 +19,14 @@ extension FactsSearchViewController: UITableViewDelegate {
 
 extension FactsSearchViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 10
+    return presenter.numberOfPastSearches
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: "PastSearchTableViewCell", for: indexPath) as? PastSearchTableViewCell else {
       return UITableViewCell()
     }
+    presenter.configureCell(with: cell, for: indexPath.row)
     return cell
   }
   

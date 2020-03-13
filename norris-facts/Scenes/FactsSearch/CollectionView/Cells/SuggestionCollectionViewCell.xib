@@ -45,6 +45,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="295" height="92"/>
             <connections>
+                <outlet property="suggestionButton" destination="i9h-aR-c0m" id="vVe-pK-Ccs"/>
                 <outlet property="suggestionLabel" destination="Qhh-nd-M7r" id="6Nh-5M-S9g"/>
             </connections>
             <point key="canvasLocation" x="65.94202898550725" y="148.66071428571428"/>

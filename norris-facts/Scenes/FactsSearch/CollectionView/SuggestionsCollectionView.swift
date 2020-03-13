@@ -19,13 +19,14 @@ extension FactsSearchViewController: UICollectionViewDelegate {
 
 extension FactsSearchViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return 10
+    return presenter.numberOfSuggestions
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SuggestionCollectionViewCell", for: indexPath) as? SuggestionCollectionViewCell else {
       return UICollectionViewCell()
     }
+    presenter.configureCell(with: cell, for: indexPath.row)
     return cell
   }
 }

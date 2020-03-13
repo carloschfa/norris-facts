@@ -8,20 +8,25 @@
 
 import UIKit
 
-#warning("CHECKPOINT: IMPLEMENTING SEARCH MODULE STRUCTURE.")
 class FactsSearchViewController: UIViewController {
   
   var configurator = FactsSearchConfiguratorImplementation()
   var presenter: FactsSearchPresenter!
+  var listPresenter: FactsListPresenter!
+  var activityIndicator: UIActivityIndicatorView?
 
   @IBOutlet weak var searchBar: UISearchBar!
   @IBOutlet weak var suggestionsCollectionView: UICollectionView!
   @IBOutlet weak var pastSearchesTableView: UITableView!
   
+  
   override func viewDidLoad() {
+    print(#function)
     super.viewDidLoad()
     configurator.configure(with: self)
     setupUI()
+    presenter.defineListPresenter(using: listPresenter)
+    presenter.viewDidLoad()
     // Do any additional setup after loading the view.
   }
   
@@ -31,6 +36,12 @@ class FactsSearchViewController: UIViewController {
     
     let pastSearchesCellNib = UINib(nibName: "PastSearchTableViewCell", bundle: Bundle.main)
     self.pastSearchesTableView.register(pastSearchesCellNib, forCellReuseIdentifier: "PastSearchTableViewCell")
+    
+    let activityIndicatorView = UIActivityIndicatorView(style: .large)
+    activityIndicatorView.center = view.center
+    self.activityIndicator = activityIndicatorView
+    view.addSubview(activityIndicatorView)
+    
     
     searchBar.delegate = self
     suggestionsCollectionView.delegate = self
@@ -45,12 +56,23 @@ class FactsSearchViewController: UIViewController {
 
 extension FactsSearchViewController: UISearchBarDelegate { 
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    print("touced to search -> \(searchBar.text)")
+    guard let query = searchBar.text else { return }
+    presenter.search(for: query)
   }
 }
 
 extension FactsSearchViewController: FactsSearchView {
   func isLoading(_ value: Bool) {
+    value ? activityIndicator?.startAnimating() : activityIndicator?.stopAnimating()
+  }
+  
+  func refreshSearchView(for resultType: ResultType) {
+    if resultType == .categories {
+      self.suggestionsCollectionView.reloadData()
+    }
+    if resultType == .searches {
+      self.pastSearchesTableView.reloadData()
+    }
     
   }
 }

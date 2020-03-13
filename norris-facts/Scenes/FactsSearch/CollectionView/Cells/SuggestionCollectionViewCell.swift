@@ -8,14 +8,34 @@
 
 import UIKit
 
-class SuggestionCollectionViewCell: UICollectionViewCell {
+protocol SuggestionCollectionViewCellDelegate: class {
+  func suggestionItemIsPressed(with value: String)
+}
 
+class SuggestionCollectionViewCell: UICollectionViewCell {
+  
   // MARK: - Outlets
   @IBOutlet weak var suggestionLabel: UILabel!
+  @IBOutlet weak var suggestionButton: UIView!
+  
+  weak var delegate: SuggestionCollectionViewCellDelegate?
+  
+  override func awakeFromNib() {
+    super.awakeFromNib()
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
+    let gesture = UITapGestureRecognizer(target: self, action:  #selector (self.suggestionActionButton(_:)))
+    self.suggestionButton.addGestureRecognizer(gesture)
+    // Initialization code
+  }
+  
+  func configureCell(category: Category) {
+    self.suggestionLabel.text = category.value
+  }
+  
+  @objc func suggestionActionButton(_ sender:UITapGestureRecognizer){
+    guard let value = self.suggestionLabel.text else { return }
+    delegate?.suggestionItemIsPressed(with: value)
+  }
+  
+  
 }

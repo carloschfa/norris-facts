@@ -20,6 +20,7 @@ class FactsSearchConfiguratorImplementation: FactsSearchConfigurator {
     let displayFactsUseCase = DisplayFactsUseCaseImplementation(factsGateway: apiFactsGateway)
 
     let router  = FactsSearchRouterImplementation()
+    router.factsSearchViewController = factsSearchViewController
 
     let presenter = FactsSearchPresenterImplementation(view: factsSearchViewController,
                                                        displayFactsUseCase: displayFactsUseCase,

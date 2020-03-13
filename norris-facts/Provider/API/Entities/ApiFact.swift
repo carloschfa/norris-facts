@@ -8,6 +8,11 @@
 
 import Foundation
 
+struct ApiFactSearch: Decodable {
+  let total: Int
+  let result: [ApiFact]
+}
+
 struct ApiFact: Decodable {
   var categories: [String]
   var createdAt: String

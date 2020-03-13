@@ -20,6 +20,7 @@ protocol FactsListPresenter {
   func configureCell(with cell: FactItemTableViewCell, forRow row: Int)
   func viewDidLoad()
   func searchButtonPressed()
+  func reloadFacts(with facts: [Fact])
 }
 
 class FactsListPresenterImplementation: FactsListPresenter {
@@ -65,7 +66,7 @@ class FactsListPresenterImplementation: FactsListPresenter {
   }
   
   func searchButtonPressed() {
-    router.presentSearch()
+    router.presentSearch(using: self)
   }
   
   private func handleFactsReceived(_ facts: [Fact]) {
@@ -75,6 +76,11 @@ class FactsListPresenterImplementation: FactsListPresenter {
   
   private func handleFactsError(_ error: Error) {
     view?.displayFactsRetrievalError(title: "Error", message: error.localizedDescription)
+  }
+  
+  func reloadFacts(with facts: [Fact]) {
+    self.facts = facts
+    view?.refreshFactsView()
   }
 
 }

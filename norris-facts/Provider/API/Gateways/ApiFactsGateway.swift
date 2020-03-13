@@ -39,10 +39,11 @@ class ApiFactsGatewayImplementation: ApiFactsGateway {
     apiCoreDataFactsProvider?.insert(search: Search(value: query, searchedAt: Date()))
     
     let request = FactsBySearchApiRequest(query: query)
-    apiClient.execute(request: request) { (result: Result<ApiResponse<[ApiFact]>>) in
+    
+    apiClient.execute(request: request) { (result: Result<ApiResponse<ApiFactSearch>>) in
       switch result {
       case let .success(response):
-        let facts = response.entity.map { return $0.fact }
+        let facts = response.entity.result.map { return $0.fact }
         facts.forEach { apiCoreDataFactsProvider?.insert(fact: $0) }
         guard let localFacts = apiCoreDataFactsProvider?.getFacts(where: query) else { return }
         completionHandler(.success(localFacts))
